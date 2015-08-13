@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:h="http://java.sun.com/jsf/html">
+<body>
+	<ui:composition>
+		<h:form>
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+			<p:commandButton id="db2" value="CRM" type="submit" action="#{menuView.actionCRM}"/>
+			<p:commandButton id="db3" value="Vendas" type="submit" action="#{menuView.actionSales}"/>
+			<p:commandButton id="db4" value="Compras" type="submit" action="#{menuView.actionPurchases}"/>
+			<p:commandButton id="db5" value="Contabilidade" type="submit" action="#{menuView.actionAccounting}"/>
+			<p:commandButton id="db6" value="RH" type="submit" action="#{menuView.actionHR}"/>
+			<p:commandButton id="db7" value="Projetos" type="submit" action="#{menuView.actionProjects}"/>
+			<p:commandButton id="db8" value="Marketing" type="submit" action="#{menuView.actionMarketing}"/> 
+			<p:commandButton  id="db9" value="Administração" type="submit" action="#{menuView.actionAdministration}" />
+ 
+		</h:form>
+	</ui:composition>
+</body>
+</html>

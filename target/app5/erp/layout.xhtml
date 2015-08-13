@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<h:body>
+<f:facet name="first">
+	<h:outputStylesheet library="default" name="css/style.css" />
+</f:facet>
+
+	<p:layout fullPage="true">
+		<p:layoutUnit position="north" resizable="false" closable="true"
+			collapsible="true" size="50" styleClass="menutop">
+			<ui:insert name="top">
+				<ui:include src="inc_top.xhtml" />
+			</ui:insert>
+		</p:layoutUnit>
+		<p:layoutUnit position="west" resizable="true" closable="true"
+			collapsible="true">
+			<ui:insert name="menu">
+				<ui:include src="inc_menu.xhtml" />
+			</ui:insert>
+		</p:layoutUnit>
+		<p:layoutUnit position="center" resizable="true" closable="true"
+			collapsible="true" effect="drop" id="content">
+			<ui:insert name="content">
+
+			</ui:insert>
+		</p:layoutUnit>
+	</p:layout>
+
+
+</h:body>
+</html>

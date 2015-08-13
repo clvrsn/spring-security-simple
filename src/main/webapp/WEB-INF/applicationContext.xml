@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+  http://www.springframework.org/schema/beans/spring-beans.xsd
+  http://www.springframework.org/schema/tx 
+  http://www.springframework.org/schema/tx/spring-tx.xsd
+  http://www.springframework.org/schema/context 
+  http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/data/jpa
+    http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+  ">
+
+	<context:annotation-config />
+	<context:component-scan base-package="br.edu.up.posjava.app5" />
+
+	<bean
+		class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+
+
+	<!-- Make sure the following is specified to enable transaction -->
+	<tx:annotation-driven />
+	<bean class="org.springframework.orm.jpa.JpaTransactionManager"
+		id="transactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+
+	<bean id="jpaVendorAdapter"
+		class="org.springframework.orm.jpa.vendor.EclipseLinkJpaVendorAdapter">
+		<property name="databasePlatform"
+			value="org.eclipse.persistence.platform.database.PostgreSQLPlatform" />
+		<property name="generateDdl" value="false" />
+		<property name="showSql" value="true" />
+	</bean>
+
+	<bean id='dataSource'
+		class='org.springframework.jdbc.datasource.DriverManagerDataSource'>
+		<property name='driverClassName' value='org.postgresql.Driver' />
+		<property name='url' value='jdbc:postgresql://clvrsn.com/bralol' />
+		<property name='username' value='clvrsn' />
+		<property name='password' value='cl3v3rs0n' />
+	</bean>
+
+	<bean id='entityManagerFactory'
+		class='org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean'>
+		<property name="persistenceUnitName" value="app5-unit" />
+		<property name='dataSource' ref='dataSource' />
+		<property name="jpaPropertyMap">
+			<map>
+				<entry key="eclipselink.weaving" value="false" />
+			</map>
+		</property>
+		<property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
+	</bean>
+
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="msg" />
+	</bean>
+
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	<jpa:repositories base-package="br.edu.up.posjava.app5.repository" />
+
+</beans>
